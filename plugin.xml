@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="subobjectjava.eclipse"
+         name="Subobject Java Eclipse"
+         point="chameleon.eclipse.language">
+         <bootstrapper
+          class="subobjectjava.eclipse.Bootstrapper">
+         </bootstrapper>
+   </extension>
+</plugin>
