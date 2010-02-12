@@ -3,6 +3,7 @@ package subobjectjava.eclipse;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import subobjectjava.input.SubobjectJavaModelFactory;
 import subobjectjava.model.language.SubobjectJava;
@@ -15,10 +16,14 @@ import chameleon.input.ParseException;
 import chameleon.output.Syntax;
 
 
-public class Bootstrapper implements EclipseBootstrapper {
+public class Bootstrapper extends EclipseBootstrapper {
+	
+	public void registerFileExtensions() {
+		addExtension("java");
+	}
 	
 	public String getLanguageName() {
-		return "Subobject Java";
+		return "JLow";
 	}
 
 	public String getLanguageVersion() {
@@ -30,9 +35,9 @@ public class Bootstrapper implements EclipseBootstrapper {
 	}
 
 	public String getDescription() {
-		return "Jnome: a Chameleon model for Java";
+		return "Java with subobjects";
 	}
-
+	
 	public String getLicense() {
 		return "";
 	}

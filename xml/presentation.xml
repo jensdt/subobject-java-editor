@@ -2,7 +2,6 @@
 	<stylerule element="*" decorator="__Name" description="Variable and Function Names">
 		<foreground>#0000A0</foreground>
 		<background>#FFFFFF</background>
-		<bold />
 	</stylerule>
 	
 	<stylerule element="chameleon.support.expression.RegularLiteral" decorator="__ALL" description="Literals">
@@ -29,9 +28,8 @@
 		<bold />
 	</stylerule>
 	<stylerule element="*" decorator="__CROSS_REFERENCE"  description="Cross References">
-		<foreground>#A000E0</foreground>
+		<foreground>#000000</foreground>
 		<background>#FFFFFF</background>
-		<bold />
 	</stylerule>		
 
 	<stylerule element="*" decorator="__PRIMITIVE"  description="Primitive Types">
