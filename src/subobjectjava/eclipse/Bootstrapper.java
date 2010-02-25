@@ -5,9 +5,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import jnome.core.language.Java;
+
 import subobjectjava.input.SubobjectJavaModelFactory;
 import subobjectjava.model.language.SubobjectJava;
 import chameleon.core.language.Language;
+import chameleon.core.namespace.RootNamespace;
+import chameleon.editor.connector.Builder;
 import chameleon.editor.connector.EclipseBootstrapper;
 import chameleon.editor.connector.EclipseEditorExtension;
 import chameleon.exception.ChameleonProgrammerException;
@@ -57,6 +61,15 @@ public class Bootstrapper extends EclipseBootstrapper {
 		}
 		result.setConnector(EclipseEditorExtension.class, new SubobjectJavaEditorExtension());
 		return result;
+	}
+	
+	public Builder createBuilder(Language source) {
+		RootNamespace clone = source.defaultNamespace().clone();
+		Java result = new Java();
+		result.cloneConnectorsFrom(source);
+		result.cloneProcessorsFrom(source);
+		result.setDefaultNamespace(clone);
+		return new JLowBuilder((SubobjectJava) source, result);
 	}
 
 }
