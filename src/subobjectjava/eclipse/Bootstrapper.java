@@ -1,7 +1,9 @@
 package subobjectjava.eclipse;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import subobjectjava.input.SubobjectJavaModelFactory;
 import subobjectjava.model.language.SubobjectJava;
 import chameleon.core.language.Language;
 import chameleon.core.namespace.RootNamespace;
+import chameleon.editor.LanguageMgt;
 import chameleon.editor.connector.Builder;
 import chameleon.editor.connector.EclipseBootstrapper;
 import chameleon.editor.connector.EclipseEditorExtension;
@@ -22,6 +25,8 @@ import chameleon.output.Syntax;
 
 
 public class Bootstrapper extends EclipseBootstrapper {
+	
+	public final static String PLUGIN_ID="be.chameleon.eclipse.jlow";
 	
 	public void registerFileExtensions() {
 		addExtension("java");
@@ -56,7 +61,10 @@ public class Bootstrapper extends EclipseBootstrapper {
 		ModelFactory factory = new SubobjectJavaModelFactory(result);
 		factory.setLanguage(result, ModelFactory.class);
 		try {
-		  factory.initializeBase(new ArrayList<File>());
+			FilenameFilter filter = LanguageMgt.fileNameFilter(".java");
+			URL directory = LanguageMgt.pluginURL(PLUGIN_ID, "api/");
+			List<File> files = LanguageMgt.allFiles(directory, filter);
+		  factory.initializeBase(files);
 		} catch(ChameleonProgrammerException exc) {
 			// Object and String may not be present yet.
 		}
