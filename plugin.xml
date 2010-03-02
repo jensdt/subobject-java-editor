@@ -9,4 +9,10 @@
           class="subobjectjava.eclipse.Bootstrapper">
          </bootstrapper>
    </extension>
+   <extension point="org.eclipse.core.contenttype.contentTypes"> 
+      <file-association
+       content-type="be.chameleon.eclipse.chameleonsource"
+       file-extensions="jlow"/>
+   </extension>
+   
 </plugin>
