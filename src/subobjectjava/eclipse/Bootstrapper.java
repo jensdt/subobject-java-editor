@@ -30,6 +30,7 @@ public class Bootstrapper extends EclipseBootstrapper {
 	
 	public void registerFileExtensions() {
 		addExtension("java");
+		addExtension("jlow");
 	}
 	
 	public String getLanguageName() {

@@ -23,8 +23,15 @@ public class JLowBuilder extends Builder {
 	
 	@Override
 	public void build(CompilationUnit compilationUnit) throws ModelException, IOException {
+		try {
 		CompilationUnit translated = _translator.build(compilationUnit);
 		_writer.write(translated);
+		} catch(Error e) {
+			e.printStackTrace();
+			throw e;
+		} catch(RuntimeException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public Language targetLanguage() {
