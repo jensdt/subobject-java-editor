@@ -29,7 +29,8 @@ public class Bootstrapper extends EclipseBootstrapper {
 	public final static String PLUGIN_ID="be.chameleon.eclipse.jlow";
 	
 	public void registerFileExtensions() {
-		addExtension("java");
+//		addExtension("java"); This causes problems with the generated files after a refresh. Until
+//		                      we have a source path, I will simply rename the API files to .jlow
 		addExtension("jlow");
 	}
 	
@@ -62,14 +63,16 @@ public class Bootstrapper extends EclipseBootstrapper {
 		ModelFactory factory = new SubobjectJavaModelFactory(result);
 		factory.setLanguage(result, ModelFactory.class);
 		try {
-			FilenameFilter filter = LanguageMgt.fileNameFilter(".java");
+			FilenameFilter filter = LanguageMgt.fileNameFilter(".jlow");
 			URL directory = LanguageMgt.pluginURL(PLUGIN_ID, "api/");
 			List<File> files = LanguageMgt.allFiles(directory, filter);
+			System.out.println("Loading "+files.size()+" API files.");
 		  factory.initializeBase(files);
 		} catch(ChameleonProgrammerException exc) {
 			// Object and String may not be present yet.
 		}
 		result.setConnector(EclipseEditorExtension.class, new SubobjectJavaEditorExtension());
+		result.setConnector(Syntax.class, new JavaCodeWriter());
 		return result;
 	}
 	
