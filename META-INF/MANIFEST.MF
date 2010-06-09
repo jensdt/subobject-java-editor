@@ -10,7 +10,8 @@ Bundle-ClassPath: bin/.,
  lib/subobjectjava.jar
 Require-Bundle: be.chameleon.eclipse;bundle-version="1.0.0",
  be.chameleon.eclipse.java;bundle-version="1.0.0",
- org.eclipse.swt;bundle-version="3.5.0"
+ org.eclipse.swt;bundle-version="3.5.0",
+ org.eclipse.jface;bundle-version="3.5.2"
 Export-Package: subobjectjava.eclipse,
  subobjectjava.input,
  subobjectjava.model.component,
