@@ -2,6 +2,7 @@ package subobjectjava.eclipse;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import jnome.core.language.Java;
 import subobjectjava.model.language.SubobjectJava;
@@ -24,8 +25,12 @@ public class JLowBuilder extends Builder {
 	@Override
 	public void build(CompilationUnit compilationUnit) throws ModelException, IOException {
 		try {
-		CompilationUnit translated = _translator.build(compilationUnit);
-		_writer.write(translated);
+			String fileName = _writer.fileName(compilationUnit);
+			System.out.println("Building "+fileName);
+			List<CompilationUnit> compilationUnits = _translator.build(compilationUnit);
+			for(CompilationUnit translated : compilationUnits) {
+				_writer.write(translated);
+			}
 		} catch(Error e) {
 			e.printStackTrace();
 			throw e;
