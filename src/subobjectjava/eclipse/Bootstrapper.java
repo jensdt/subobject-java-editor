@@ -63,11 +63,7 @@ public class Bootstrapper extends EclipseBootstrapper {
 		ModelFactory factory = new SubobjectJavaModelFactory(result);
 		factory.setLanguage(result, ModelFactory.class);
 		try {
-			FilenameFilter filter = LanguageMgt.fileNameFilter(".jlow");
-			URL directory = LanguageMgt.pluginURL(PLUGIN_ID, "api/");
-			List<File> files = LanguageMgt.allFiles(directory, filter);
-			System.out.println("Loading "+files.size()+" API files.");
-		  factory.initializeBase(files);
+			loadAPIFiles(".jlow", PLUGIN_ID, factory);
 		} catch(ChameleonProgrammerException exc) {
 			// Object and String may not be present yet.
 		}
