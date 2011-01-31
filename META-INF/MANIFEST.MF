@@ -14,7 +14,6 @@ Require-Bundle: be.chameleon.eclipse;bundle-version="1.0.0",
  org.eclipse.jface;bundle-version="3.5.2"
 Export-Package: subobjectjava.eclipse,
  subobjectjava.input,
- subobjectjava.build,
  subobjectjava.model.component,
  subobjectjava.model.language,
  subobjectjava.translate
