@@ -10,7 +10,7 @@ import jnome.core.language.Java;
 import jnome.output.JavaCodeWriter;
 import subobjectjava.build.JLoBuilder;
 import subobjectjava.input.SubobjectJavaModelFactory;
-import subobjectjava.model.language.SubobjectJava;
+import subobjectjava.model.language.JLo;
 import chameleon.core.language.Language;
 import chameleon.editor.LanguageMgt;
 import chameleon.editor.connector.EclipseBootstrapper;
@@ -33,7 +33,7 @@ public class Bootstrapper extends EclipseBootstrapper {
 	}
 	
 	public String getLanguageName() {
-		return "JLow";
+		return "J.Lo";
 	}
 
 	public String getLanguageVersion() {
@@ -57,7 +57,7 @@ public class Bootstrapper extends EclipseBootstrapper {
 	}
 
 	public Language createLanguage() throws IOException, ParseException {
-		SubobjectJava result = new SubobjectJava();
+		JLo result = new JLo();
 		ModelFactory factory = new SubobjectJavaModelFactory(result);
 		factory.setLanguage(result, ModelFactory.class);
 		try {
@@ -76,7 +76,7 @@ public class Bootstrapper extends EclipseBootstrapper {
 //		result.cloneProcessorsFrom(source);
 //		result.setDefaultNamespace(clone);
 		File outputDirectory = new File(projectDirectory.getAbsolutePath()+File.separator+"java");
-		return new JLoBuilder((SubobjectJava) source, outputDirectory);
+		return new JLoBuilder((JLo) source, outputDirectory);
 	}
 
 }
