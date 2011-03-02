@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: JLow Eclipse
-Bundle-SymbolicName: be.chameleon.eclipse.jlow;singleton:=true
+Bundle-Name: JLo Eclipse
+Bundle-SymbolicName: be.chameleon.eclipse.jlo;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Vendor: K.U.Leuven
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

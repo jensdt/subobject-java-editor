@@ -24,12 +24,12 @@ import chameleon.plugin.output.Syntax;
 
 public class Bootstrapper extends EclipseBootstrapper {
 	
-	public final static String PLUGIN_ID="be.chameleon.eclipse.jlow";
+	public final static String PLUGIN_ID="be.chameleon.eclipse.jlo";
 	
 	public void registerFileExtensions() {
 //		addExtension("java"); This causes problems with the generated files after a refresh. Until
-//		                      we have a source path, I will simply rename the API files to .jlow
-		addExtension("jlow");
+//		                      we have a source path, I will simply rename the API files to .jlo
+		addExtension("jlo");
 	}
 	
 	public String getLanguageName() {
@@ -61,7 +61,7 @@ public class Bootstrapper extends EclipseBootstrapper {
 		ModelFactory factory = new SubobjectJavaModelFactory(result);
 		factory.setLanguage(result, ModelFactory.class);
 		try {
-			loadAPIFiles(".jlow", PLUGIN_ID, factory);
+			loadAPIFiles(".jlo", PLUGIN_ID, factory);
 		} catch(ChameleonProgrammerException exc) {
 			// Object and String may not be present yet.
 		}
