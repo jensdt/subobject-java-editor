@@ -2,8 +2,8 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         id="JLow.eclipse"
-         name="JLow Eclipse"
+         id="JLo.eclipse"
+         name="JLo Eclipse"
          point="chameleon.eclipse.language">
          <bootstrapper
           class="subobjectjava.eclipse.Bootstrapper">
@@ -12,7 +12,7 @@
    <extension point="org.eclipse.core.contenttype.contentTypes"> 
       <file-association
        content-type="be.chameleon.eclipse.chameleonsource"
-       file-extensions="jlow"/>
+       file-extensions="jlo"/>
    </extension>
    
 </plugin>

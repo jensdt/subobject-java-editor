@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Chameleon"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Chameleon Editor"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Chameleon Support"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Jnome"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Jnome Editor"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rejuse"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Subobject Java"/>
+	<classpathentry kind="lib" path="lib/subobjectjava.jar" sourcepath="/Subobject Java/src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

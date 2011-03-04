@@ -4,38 +4,36 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import jnome.core.language.Java;
 import jnome.output.JavaCodeWriter;
-
+import subobjectjava.build.JLoBuilder;
 import subobjectjava.input.SubobjectJavaModelFactory;
-import subobjectjava.model.language.SubobjectJava;
+import subobjectjava.model.language.JLo;
 import chameleon.core.language.Language;
-import chameleon.core.namespace.RootNamespace;
 import chameleon.editor.LanguageMgt;
-import chameleon.editor.connector.Builder;
 import chameleon.editor.connector.EclipseBootstrapper;
 import chameleon.editor.connector.EclipseEditorExtension;
 import chameleon.exception.ChameleonProgrammerException;
 import chameleon.input.ModelFactory;
 import chameleon.input.ParseException;
-import chameleon.output.Syntax;
+import chameleon.plugin.build.Builder;
+import chameleon.plugin.output.Syntax;
 
 
 public class Bootstrapper extends EclipseBootstrapper {
 	
-	public final static String PLUGIN_ID="be.chameleon.eclipse.jlow";
+	public final static String PLUGIN_ID="be.chameleon.eclipse.jlo";
 	
 	public void registerFileExtensions() {
 //		addExtension("java"); This causes problems with the generated files after a refresh. Until
-//		                      we have a source path, I will simply rename the API files to .jlow
-		addExtension("jlow");
+//		                      we have a source path, I will simply rename the API files to .jlo
+		addExtension("jlo");
 	}
 	
 	public String getLanguageName() {
-		return "JLow";
+		return "J.Lo";
 	}
 
 	public String getLanguageVersion() {
@@ -59,28 +57,26 @@ public class Bootstrapper extends EclipseBootstrapper {
 	}
 
 	public Language createLanguage() throws IOException, ParseException {
-		SubobjectJava result = new SubobjectJava();
+		JLo result = new JLo();
 		ModelFactory factory = new SubobjectJavaModelFactory(result);
 		factory.setLanguage(result, ModelFactory.class);
 		try {
-			loadAPIFiles(".jlow", PLUGIN_ID, factory);
+			loadAPIFiles(".jlo", PLUGIN_ID, factory);
 		} catch(ChameleonProgrammerException exc) {
 			// Object and String may not be present yet.
 		}
-		result.setConnector(EclipseEditorExtension.class, new SubobjectJavaEditorExtension());
-		result.setConnector(Syntax.class, new JavaCodeWriter());
+		result.setPlugin(EclipseEditorExtension.class, new SubobjectJavaEditorExtension());
+		result.setPlugin(Syntax.class, new JavaCodeWriter());
 		return result;
 	}
-	
+
 	public Builder createBuilder(Language source, File projectDirectory) {
 //		RootNamespace clone = source.defaultNamespace().clone();
-		Java result = new Java();
 //		result.cloneConnectorsFrom(source);
 //		result.cloneProcessorsFrom(source);
 //		result.setDefaultNamespace(clone);
-		result.setConnector(Syntax.class, new JavaCodeWriter());
 		File outputDirectory = new File(projectDirectory.getAbsolutePath()+File.separator+"java");
-		return new JLowBuilder((SubobjectJava) source, result, outputDirectory);
+		return new JLoBuilder((JLo) source, outputDirectory);
 	}
 
 }
